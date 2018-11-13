@@ -58,23 +58,49 @@ function getLocation(location) {
   ) : undefined;
 }
 
-var templateTwo = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'h1',
-    null,
-    user.name + "!"
-  ),
-  React.createElement(
-    'p',
-    null,
-    'Age: ',
-    user.age
-  ),
-  getLocation(user.location)
-);
+var count = 0;
+var addOne = function addOne() {
+  count += 1;
+  reRender();
+};
+var takeOne = function takeOne() {
+  count -= 1;
+  reRender();
+};
+var resetAll = function resetAll() {
+  count = 0;
+  reRender();
+};
 
-var appRoot = document.getElementById('app');
+var reRender = function reRender() {
+  var templateTwo = React.createElement(
+    'div',
+    null,
+    React.createElement(
+      'h1',
+      null,
+      count
+    ),
+    React.createElement(
+      'button',
+      { onClick: addOne },
+      '+1'
+    ),
+    React.createElement(
+      'button',
+      { onClick: takeOne },
+      '-1'
+    ),
+    React.createElement(
+      'button',
+      { onClick: resetAll },
+      'reset'
+    )
+  );
 
-ReactDOM.render(templateTwo, appRoot);
+  var appRoot = document.getElementById('app');
+
+  ReactDOM.render(templateTwo, appRoot);
+};
+
+reRender();

@@ -29,14 +29,34 @@ function getLocation(location) {
   return location ? <p> Location: {location} </p> : undefined;
 }
 
-let templateTwo = (
-  <div>
-    <h1>{user.name + "!"}</h1>
-    <p>Age: {user.age}</p>
-    {getLocation(user.location)}
-  </div>
-);
 
-let appRoot = document.getElementById('app');
+let count = 0;
+const addOne = () => {
+  count +=1;
+  reRender();
+}
+const takeOne = () => {
+  count -=1;
+  reRender();
+}
+const resetAll = () => {
+  count =0;
+  reRender();
+}
 
-ReactDOM.render(templateTwo, appRoot);
+const reRender = () => {
+  const templateTwo = (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={addOne}>+1</button>
+      <button onClick={takeOne}>-1</button>
+      <button onClick={resetAll}>reset</button>
+    </div>
+  );
+
+  let appRoot = document.getElementById('app');
+
+  ReactDOM.render(templateTwo, appRoot);
+};
+
+reRender();
