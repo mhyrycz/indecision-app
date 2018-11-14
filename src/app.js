@@ -1,4 +1,3 @@
-
 const app = {
   title: 'Indecision App',
   subtitle: 'Put your life in the hands of a computer',
@@ -29,9 +28,11 @@ const reRender = () => {
       <p>{app.options.length}</p>
       <button onClick={removeAll}>Remove all</button>
       <ol>
-        {app.options.map((option) => {
-          return <p>{option}</p>;
-        })}
+        {
+          app.options.map((option) => {
+            return <li key={option}>{option}</li>;
+          })
+        }
       </ol>
       <form onSubmit={addOption}>
         <input type="text" name="option"/>
@@ -43,16 +44,8 @@ const reRender = () => {
   ReactDOM.render(template, appRoot);
 };
 
-let user =
-{
-  name: "Maciej",
-  age: 26,
-  location: "Kraków"
-};
 //babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
-function getLocation(location) {
-  return location ? <p> Location: {location} </p> : undefined;
-};
+
 
 let appRoot = document.getElementById('app');
 

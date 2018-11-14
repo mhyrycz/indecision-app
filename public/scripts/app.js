@@ -55,8 +55,8 @@ var reRender = function reRender() {
       null,
       app.options.map(function (option) {
         return React.createElement(
-          'p',
-          null,
+          'li',
+          { key: option },
           option
         );
       })
@@ -75,21 +75,8 @@ var reRender = function reRender() {
   ReactDOM.render(template, appRoot);
 };
 
-var user = {
-  name: "Maciej",
-  age: 26,
-  location: "Kraków"
-};
 //babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
-function getLocation(location) {
-  return location ? React.createElement(
-    'p',
-    null,
-    ' Location: ',
-    location,
-    ' '
-  ) : undefined;
-};
+
 
 var appRoot = document.getElementById('app');
 
