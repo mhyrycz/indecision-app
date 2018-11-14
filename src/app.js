@@ -29,8 +29,9 @@ const reRender = () => {
       <p>{app.options.length}</p>
       <button onClick={removeAll}>Remove all</button>
       <ol>
-        <li>Item one</li>
-        <li>Item two</li>
+        {app.options.map((option) => {
+          return <p>{option}</p>;
+        })}
       </ol>
       <form onSubmit={addOption}>
         <input type="text" name="option"/>

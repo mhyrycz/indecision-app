@@ -53,16 +53,13 @@ var reRender = function reRender() {
     React.createElement(
       'ol',
       null,
-      React.createElement(
-        'li',
-        null,
-        'Item one'
-      ),
-      React.createElement(
-        'li',
-        null,
-        'Item two'
-      )
+      app.options.map(function (option) {
+        return React.createElement(
+          'p',
+          null,
+          option
+        );
+      })
     ),
     React.createElement(
       'form',
