@@ -8,39 +8,68 @@ var app = {
   subtitle: 'Put your life in the hands of a computer',
   options: ['One', 'Two']
 };
-var template = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'h1',
-    null,
-    app.title
-  ),
-  app.subtitle && React.createElement(
-    'p',
-    null,
-    app.subtitle
-  ),
-  React.createElement(
-    'p',
-    null,
-    app.options.length > 0 ? 'Here are your options' : 'No options'
-  ),
-  React.createElement(
-    'ol',
+
+var shit = function shit(e) {
+  e.preventDefault();
+  var option = e.target.elements.option.value;
+  if (option) {
+    app.options.push(option);
+    e.target.elements.option.value = '';
+  };
+  reRender();
+};
+
+var reRender = function reRender() {
+  var template = React.createElement(
+    'div',
     null,
     React.createElement(
-      'li',
+      'h1',
       null,
-      'Item one'
+      app.title
+    ),
+    app.subtitle && React.createElement(
+      'p',
+      null,
+      app.subtitle
     ),
     React.createElement(
-      'li',
+      'p',
       null,
-      'Item two'
+      app.options.length > 0 ? 'Here are your options' : 'No options'
+    ),
+    React.createElement(
+      'p',
+      null,
+      app.options.length
+    ),
+    React.createElement(
+      'ol',
+      null,
+      React.createElement(
+        'li',
+        null,
+        'Item one'
+      ),
+      React.createElement(
+        'li',
+        null,
+        'Item two'
+      )
+    ),
+    React.createElement(
+      'form',
+      { onSubmit: shit },
+      React.createElement('input', { type: 'text', name: 'option' }),
+      React.createElement(
+        'button',
+        null,
+        'add option'
+      )
     )
-  )
-);
+  );
+  ReactDOM.render(template, appRoot);
+};
 
 var user = {
   name: "Maciej",
@@ -58,49 +87,6 @@ function getLocation(location) {
   ) : undefined;
 }
 
-var count = 0;
-var addOne = function addOne() {
-  count += 1;
-  reRender();
-};
-var takeOne = function takeOne() {
-  count -= 1;
-  reRender();
-};
-var resetAll = function resetAll() {
-  count = 0;
-  reRender();
-};
-
-var reRender = function reRender() {
-  var templateTwo = React.createElement(
-    'div',
-    null,
-    React.createElement(
-      'h1',
-      null,
-      count
-    ),
-    React.createElement(
-      'button',
-      { onClick: addOne },
-      '+1'
-    ),
-    React.createElement(
-      'button',
-      { onClick: takeOne },
-      '-1'
-    ),
-    React.createElement(
-      'button',
-      { onClick: resetAll },
-      'reset'
-    )
-  );
-
-  var appRoot = document.getElementById('app');
-
-  ReactDOM.render(templateTwo, appRoot);
-};
+var appRoot = document.getElementById('app');
 
 reRender();
