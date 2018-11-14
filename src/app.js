@@ -11,23 +11,23 @@ const addOption = (e) => {
     app.options.push(option);
     e.target.elements.option.value = '';
   };
-  reRender();
+  render();
 };
 
 const onRemoveAll = () => {
   app.options = [];
-  reRender();
+  render();
 };
 
 const onMakeDecision = () => {
   const helpInfo = "Write smth and click add option";
   alert(helpInfo)
-  reRender();
+  render();
 };
 
 const appRoot = document.getElementById('app');
 
-const reRender = () => {
+const render = () => {
   let template = (
     <div>
       <h1>{app.title}</h1>
@@ -52,6 +52,6 @@ const reRender = () => {
   ReactDOM.render(template, appRoot);
 };
 
-reRender();
+render();
 
 //babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch

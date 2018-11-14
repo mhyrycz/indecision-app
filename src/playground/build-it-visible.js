@@ -1,28 +1,25 @@
 const appRoot = document.getElementById('app');
 
-let buttonChoice = ["Show details", "Hide details"];
+let visibility = false;
 
 const changeButton = () => {
-  buttonChoice.reverse();
-  reRender();
-};
-const showMessage = () => {
-  if (buttonChoice[0]=== "Hide details") {
-    return <p> Some details </p>
-  };
+  visibility = !visibility
+  render();
 };
 
-const reRender = () => {
+const render = () => {
   let template = (
     <div>
       <h1>Visibility Toggle</h1>
-      <button onClick={changeButton}>{buttonChoice[0]}</button>
-      {showMessage()}
+      <button onClick={changeButton}>
+        {visibility ? 'Hide details' : 'Show details'}
+      </button>
+      {visibility && (<div> Some details </div>) }
     </div>
   );
   ReactDOM.render(template, appRoot);
 };
 
-reRender();
+render();
 
 //babel src/playground/build-it-visible.js --out-file=public/scripts/app.js --presets=env,react --watch

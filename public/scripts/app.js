@@ -1,42 +1,37 @@
-"use strict";
+'use strict';
 
 var appRoot = document.getElementById('app');
 
-var buttonChoice = ["Show details", "Hide details"];
+var visibility = false;
 
 var changeButton = function changeButton() {
-  buttonChoice.reverse();
-  reRender();
-};
-var showMessage = function showMessage() {
-  if (buttonChoice[0] === "Hide details") {
-    return React.createElement(
-      "p",
-      null,
-      " Some details "
-    );
-  };
+  visibility = !visibility;
+  render();
 };
 
-var reRender = function reRender() {
+var render = function render() {
   var template = React.createElement(
-    "div",
+    'div',
     null,
     React.createElement(
-      "h1",
+      'h1',
       null,
-      "Visibility Toggle"
+      'Visibility Toggle'
     ),
     React.createElement(
-      "button",
+      'button',
       { onClick: changeButton },
-      buttonChoice[0]
+      visibility ? 'Hide details' : 'Show details'
     ),
-    showMessage()
+    visibility && React.createElement(
+      'div',
+      null,
+      ' Some details '
+    )
   );
   ReactDOM.render(template, appRoot);
 };
 
-reRender();
+render();
 
 //babel src/playground/build-it-visible.js --out-file=public/scripts/app.js --presets=env,react --watch
