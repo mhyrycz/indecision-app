@@ -26,3 +26,5 @@ const getFirstName = (full) => {
 const getFirstName = (full) => full.split(' ')[0];
 
 console.log(getFirstName('Maciej Hyrycz'));
+
+//babel src/playground/es6-arrow-function.js --out-file=public/scripts/app.js --presets=env,react --watch

@@ -52,6 +52,6 @@ const reRender = () => {
   ReactDOM.render(template, appRoot);
 };
 
-//babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
-
 reRender();
+
+//babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch

@@ -35,3 +35,5 @@ const multiplier = {
 };
 
 console.log(multiplier.multiply());
+
+//babel src/playground/es6-arrow-function-2.js --out-file=public/scripts/app.js --presets=env,react --watch

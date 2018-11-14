@@ -28,3 +28,5 @@ const reRender = () => {
 };
 
 reRender();
+
+//babel src/playground/counter.js --out-file=public/scripts/app.js --presets=env,react --watch
