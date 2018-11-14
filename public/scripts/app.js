@@ -1,21 +1,23 @@
 'use strict';
 
-console.log('shit');
-
-//JSX - JavaScript XML
 var app = {
   title: 'Indecision App',
   subtitle: 'Put your life in the hands of a computer',
-  options: ['One', 'Two']
+  options: []
 };
 
-var shit = function shit(e) {
+var addOption = function addOption(e) {
   e.preventDefault();
   var option = e.target.elements.option.value;
   if (option) {
     app.options.push(option);
     e.target.elements.option.value = '';
   };
+  reRender();
+};
+
+var removeAll = function removeAll() {
+  app.options = [];
   reRender();
 };
 
@@ -44,6 +46,11 @@ var reRender = function reRender() {
       app.options.length
     ),
     React.createElement(
+      'button',
+      { onClick: removeAll },
+      'Remove all'
+    ),
+    React.createElement(
       'ol',
       null,
       React.createElement(
@@ -59,7 +66,7 @@ var reRender = function reRender() {
     ),
     React.createElement(
       'form',
-      { onSubmit: shit },
+      { onSubmit: addOption },
       React.createElement('input', { type: 'text', name: 'option' }),
       React.createElement(
         'button',
@@ -85,7 +92,7 @@ function getLocation(location) {
     location,
     ' '
   ) : undefined;
-}
+};
 
 var appRoot = document.getElementById('app');
 
