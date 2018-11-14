@@ -14,10 +14,18 @@ const addOption = (e) => {
   reRender();
 };
 
-const removeAll = () => {
+const onRemoveAll = () => {
   app.options = [];
   reRender();
 };
+
+const onMakeDecision = () => {
+  const helpInfo = "Write smth and click add option";
+  alert(helpInfo)
+  reRender();
+};
+
+const appRoot = document.getElementById('app');
 
 const reRender = () => {
   let template = (
@@ -25,8 +33,8 @@ const reRender = () => {
       <h1>{app.title}</h1>
       {app.subtitle && <p>{app.subtitle}</p>}
       <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
-      <p>{app.options.length}</p>
-      <button onClick={removeAll}>Remove all</button>
+      <button disabled={app.options.length != 0} onClick={onMakeDecision}>What should I do?</button>
+      <button onClick={onRemoveAll}>Remove all</button>
       <ol>
         {
           app.options.map((option) => {
@@ -45,8 +53,5 @@ const reRender = () => {
 };
 
 //babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
-
-
-let appRoot = document.getElementById('app');
 
 reRender();

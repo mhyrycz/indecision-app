@@ -16,10 +16,18 @@ var addOption = function addOption(e) {
   reRender();
 };
 
-var removeAll = function removeAll() {
+var onRemoveAll = function onRemoveAll() {
   app.options = [];
   reRender();
 };
+
+var onMakeDecision = function onMakeDecision() {
+  var helpInfo = "Write smth and click add option";
+  alert(helpInfo);
+  reRender();
+};
+
+var appRoot = document.getElementById('app');
 
 var reRender = function reRender() {
   var template = React.createElement(
@@ -41,13 +49,13 @@ var reRender = function reRender() {
       app.options.length > 0 ? 'Here are your options' : 'No options'
     ),
     React.createElement(
-      'p',
-      null,
-      app.options.length
+      'button',
+      { disabled: app.options.length != 0, onClick: onMakeDecision },
+      'What should I do?'
     ),
     React.createElement(
       'button',
-      { onClick: removeAll },
+      { onClick: onRemoveAll },
       'Remove all'
     ),
     React.createElement(
@@ -76,8 +84,5 @@ var reRender = function reRender() {
 };
 
 //babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
-
-
-var appRoot = document.getElementById('app');
 
 reRender();
