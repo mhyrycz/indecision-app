@@ -118,6 +118,7 @@ var Options = function (_React$Component4) {
     key: 'removeAll',
     value: function removeAll() {
       alert('handle Remove all');
+      console.log(this.props.options);
     }
   }, {
     key: 'render',
@@ -127,7 +128,7 @@ var Options = function (_React$Component4) {
         null,
         React.createElement(
           'button',
-          { onClick: this.removeAll },
+          { onClick: this.removeAll.bind(this) },
           'Remove All'
         ),
         this.props.options.map(function (option) {
@@ -173,13 +174,13 @@ var AddOption = function (_React$Component6) {
   }
 
   _createClass(AddOption, [{
-    key: 'addOption',
-    value: function addOption(e) {
+    key: 'handleAddOption',
+    value: function handleAddOption(e) {
       e.preventDefault();
       var option = e.target.elements.option.value;
       if (option) {
         alert(option);
-        //this.options.push(option);
+        this.props.options.push(option);
         e.target.elements.option.value = '';
       };
     }
@@ -188,7 +189,7 @@ var AddOption = function (_React$Component6) {
     value: function render() {
       return React.createElement(
         'form',
-        { onSubmit: this.addOption },
+        { onSubmit: this.handleAddOption },
         React.createElement('input', { type: 'text', name: 'option' }),
         React.createElement(
           'button',
