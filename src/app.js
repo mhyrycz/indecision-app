@@ -1,57 +1,56 @@
-const app = {
-  title: 'Indecision App',
-  subtitle: 'Put your life in the hands of a computer',
-  options: []
+class Header extends React.Component {
+  render() {
+    return(
+      <div>
+        <h1>Indecision</h1>
+        <h2>Put your life in the hands of computer</h2>
+      </div>
+    )
+  }
 };
 
-const addOption = (e) => {
-  e.preventDefault();
-  const option = e.target.elements.option.value;
-  if (option) {
-    app.options.push(option);
-    e.target.elements.option.value = '';
-  };
-  render();
-};
+class Action extends React.Component {
+  render() {
+    return(
+      <div>
+        <button>What should I do?</button>
+      </div>
+    )
+  }
+}
 
-const onRemoveAll = () => {
-  app.options = [];
-  render();
-};
+class Options extends React.Component {
+  render() {
+    return(
+      <div>
+        Options component here
+      </div>
+    )
+  }
+}
 
-const onMakeDecision = () => {
-  const helpInfo = "Write smth and click add option";
-  alert(helpInfo)
-  render();
-};
+class AddOption extends React.Component {
+  render() {
+    return(
+      <div>
+        AddOptions component here
+      </div>
+    )
+  }
+}
 
-const appRoot = document.getElementById('app');
+const jsx = (
+  <div>
+    <Header/>
+    <Action/>
+    <Options/>
+    <AddOption/>
+  </div>
+);
 
-const render = () => {
-  let template = (
-    <div>
-      <h1>{app.title}</h1>
-      {app.subtitle && <p>{app.subtitle}</p>}
-      <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
-      <button disabled={app.options.length != 0} onClick={onMakeDecision}>What should I do?</button>
-      <button onClick={onRemoveAll}>Remove all</button>
-      <ol>
-        {
-          app.options.map((option) => {
-            return <li key={option}>{option}</li>;
-          })
-        }
-      </ol>
-      <form onSubmit={addOption}>
-        <input type="text" name="option"/>
-        <button>add option</button>
-      </form>
+ReactDOM.render(jsx, document.getElementById('app'));
 
-    </div>
-  );
-  ReactDOM.render(template, appRoot);
-};
 
-render();
+
 
 //babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
