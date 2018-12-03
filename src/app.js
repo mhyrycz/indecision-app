@@ -1,9 +1,8 @@
-
 class IndecisionApp extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      options: []
+      options: props.options
     };
     this.handleDeleteOptions = this.handleDeleteOptions.bind(this)
     this.handleAddOption = this.handleAddOption.bind(this)
@@ -84,6 +83,10 @@ const Options = (props) => {
       }
     </div>
   )
+}
+
+IndecisionApp.defaultProps = {
+  options: []
 }
 
 const Option = (props) => {

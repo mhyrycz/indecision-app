@@ -17,7 +17,7 @@ var IndecisionApp = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
 
     _this.state = {
-      options: []
+      options: props.options
     };
     _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
     _this.handleAddOption = _this.handleAddOption.bind(_this);
@@ -125,6 +125,10 @@ var Options = function Options(props) {
       return React.createElement(Option, { optionText: option });
     })
   );
+};
+
+IndecisionApp.defaultProps = {
+  options: []
 };
 
 var Option = function Option(props) {
