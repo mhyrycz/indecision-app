@@ -37,7 +37,10 @@ class IndecisionApp extends React.Component {
     return(
       <div>
         <Header title={title} subtitle={subtitle}/>
-        <Action handlePick = {this.handlePick}/>
+        <Action
+          handlePick = {this.handlePick}
+          hasOptions = {this.state.options.length > 0}
+        />
         <Options
           options={this.state.options}
           handleDeleteOptions ={this.handleDeleteOptions}
@@ -60,11 +63,15 @@ class Header extends React.Component {
 };
 
 class Action extends React.Component {
-
   render() {
     return(
       <div>
-        <button onClick={this.props.handlePick}>What should I do?</button>
+        <button
+          onClick={this.props.handlePick}
+          disabled={!this.props.hasOptions}
+        >
+          What should I do?
+        </button>
       </div>
     )
   }

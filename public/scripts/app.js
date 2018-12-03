@@ -62,7 +62,10 @@ var IndecisionApp = function (_React$Component) {
         'div',
         null,
         React.createElement(Header, { title: title, subtitle: subtitle }),
-        React.createElement(Action, { handlePick: this.handlePick }),
+        React.createElement(Action, {
+          handlePick: this.handlePick,
+          hasOptions: this.state.options.length > 0
+        }),
         React.createElement(Options, {
           options: this.state.options,
           handleDeleteOptions: this.handleDeleteOptions
@@ -128,7 +131,10 @@ var Action = function (_React$Component3) {
         null,
         React.createElement(
           'button',
-          { onClick: this.props.handlePick },
+          {
+            onClick: this.props.handlePick,
+            disabled: !this.props.hasOptions
+          },
           'What should I do?'
         )
       );
