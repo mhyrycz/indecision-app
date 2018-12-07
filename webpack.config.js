@@ -1,4 +1,3 @@
-//entry -> output
 const path = require('path')
 
 module.exports = {
@@ -14,7 +13,8 @@ module.exports = {
       exclude: /node_modules/
     }]
   },
-  devtool: 'cheap-module-eval-source-map'
+  devtool: 'cheap-module-eval-source-map',
+  devServer: {
+    contentBase: path.join(__dirname, 'public')
+  }
 };
-
-//loader - customize bahavior of webpack
