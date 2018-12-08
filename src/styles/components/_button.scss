@@ -20,11 +20,11 @@
   border-bottom: .3rem solid darken($purple, 10%);
   color: white;
   font-weight: 500;
-  font-size: $l-size;
+  font-size: $m-size;
   padding: $s-size;
 }
 
-.button--link {
+.button--link { //alternative for button
   background: none;
   border: none;
   color: $off-white;
